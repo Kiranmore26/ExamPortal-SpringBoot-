@@ -1,0 +1,1923 @@
+What is Oracle ?
+------------------
+Oracle database is a relational database management system. 
+It is known as Oracle database, OracleDB or simply Oracle. 
+It is produced and marketed by Oracle Corporation.
+
+Oracle database is the first database designed for enterprise grid computing. 
+The enterprise grid computing provides the most flexible and cost effective way 
+to manage information and applications.
+
+10g
+11 g r2 
+18c XE
+19c
+
+MYSQL =>Database Name
+Oracle =>Database name
+SQl   =>Structured Query Language
+
+
+Different editions of Oracle database :-
+------------------------------------------
+Enterprise Edition: (orcl)
+----------------------------
+It is the most robust and secure edition. 
+It offers all features, including superior performance and security.
+
+Standard Edition: 
+------------------
+It provides the base functionality for users that do not require Enterprise Edition's robust package.
+
+Express Edition (XE): 
+----------------------
+It is the lightweight, free and limited Windows and Linux edition.
+Oracle Lite: It is designed for mobile devices.
+
+Oracle CREATE TABLE :-
+-------------------------
+In Oracle, CREATE TABLE statement is used to create a new table in the database.
+
+To create a table, you have to name that table and define its columns and datatype for each column.
+
+Syntax:
+----------
+CREATE TABLE table_name  
+(   
+  column1 datatype [ NULL | NOT NULL ],  
+  column2 datatype [ NULL | NOT NULL ],  
+  ...  
+  column_n datatype [ NULL | NOT NULL ]  
+);  
+
+Oracle CREATE TABLE Example :-
+------------------------------
+CREATE TABLE customers  
+( customer_id number(10) NOT NULL,  
+  customer_name varchar2(50) NOT NULL,  
+  city varchar2(50)  
+); 
+
+PRIMARY KEY  :-
+-----------------
+a primary key is a single field or combination of fields 
+that uniquely defines a record. None of the fields that are 
+part of the primary key can contain a null value. 
+A table can have only one primary key.
+
+NOTE:-
+--------
+* In Oracle, a primary key can not contain more than 32 columns.
+* A primary key can be defined in either a CREATE TABLE statement 
+  or an ALTER TABLE statement.
+Oracle CREATE TABLE Example with primary key :-
+---------------------------------------------------
+CREATE TABLE customers  
+( customer_id number(10) NOT NULL,  
+  customer_name varchar2(50) NOT NULL,  
+  city varchar2(50),  
+  CONSTRAINT customers_pk PRIMARY KEY (customer_id)  
+); 
+
+
+
+views in Oracle:-
+-------------------
+virtual table .it is always stored inside the data dictionary.
+
+syntax : create view view_name AS select column from Table where condi.;
+
+Program :-
+--------------
+create table "employee_view"
+("emp_id" number,
+"emp_name" VARCHAR2(200))
+
+program 2 :-
+-------------------
+create table "employee_data"
+("emp_mobileno" number,
+"emp_salary" VARCHAR2(200))
+
+join two views :-
+---------------------
+program :-
+--------------
+create view emp_view_data as 
+select employee_view.emp_id,employee_data.emp_salary
+from employee
+inner join employee_data
+on employee_view.emp_id=emp_id
+;
+
+* view is also just like a table but view is not maintaning pysical data but table is 
+  maintaning pysical data .
+* view is a database object .
+* view contains logical copy of the data .
+* without a table we can create a view but that is not valid .
+
+* view provides the security , increase db performance.
+            Query Execution process like select query is very fast.
+
+Droping the views :-
+-------------------------
+sysntax : drop view view_name 
+
+select operations if u want to perform :-
+--------------------------------------------
+select * from view_name 
+
+Oracle Queries :-
+----------------------
+Oracle select query:-
+--------------------------
+syntax : select * from Table_name 
+example :-
+-------------
+select * from employee;
+
+Oracle Insert query :-
+------------------------
+syntax : insert into table_name values(.......)
+Example : insert into employee1 values(105,'raj');
+
+Oracle update Query :-
+---------------------------
+example : update employee1 set emp_name ='roh' where emp_id=105;
+
+Oracle delete Query :-
+---------------------------
+Delete query is used to delete the records of the table.
+example :-
+-------------
+DELETE from employee1 where emp_id=105;
+
+Oracle truncate Query :-
+---------------------------
+TRUNCATE TABLE statement is used to remove all records from a table.
+example :-
+---------------
+TRUNCATE TABLE student;  
+
+difference between truncate and delete :-
+-----------------------------------------
+Both the statements will remove the data from the "student" table 
+but the main difference is that you can roll back the DELETE statement 
+whereas you can't roll back the TRUNCATE TABLE statement.
+
+Oracle Clauses :-
+------------------------
+Distinct clause:-
+-------------------
+This clause is used to remove the duplicates record from the resultset .
+syntax :
+------------
+select distinct expr from table_name where condi.
+
+First create a table name (employee102):
+CREATE TABLE EMPLOYEE102 
+(
+  NAME VARCHAR2(20) 
+, AGE NUMBER 
+, SALARY NUMBER 
+, CITY VARCHAR2(20) 
+);
+Insert the valuesin the table :-
+--------------------------------
+
+INSERT INTO "SYSTEM"."EMPLOYEE102" (NAME, AGE, SALARY, CITY) VALUES ('rohit', '23', '10000', 'mumbai')
+INSERT INTO "SYSTEM"."EMPLOYEE102" (NAME, AGE, SALARY, CITY) VALUES ('mohit', '25', '15000', 'delhi')
+INSERT INTO "SYSTEM"."EMPLOYEE102" (NAME, AGE, SALARY, CITY) VALUES ('sohit', '30', '25000', 'chennai')
+INSERT INTO "SYSTEM"."EMPLOYEE102" (NAME, AGE, SALARY, CITY) VALUES ('raj', '35', '35000', 'hyderbad')
+INSERT INTO "SYSTEM"."EMPLOYEE102" (NAME, AGE, SALARY, CITY) VALUES ('raju', '20', '7000', 'delhi')
+INSERT INTO "SYSTEM"."EMPLOYEE102" (NAME, AGE, SALARY, CITY) VALUES ('raja', '40', '40000', 'shimla')
+
+Example :-
+-------------
+select distinct city from employee102 where name ='raj';
+
+Exmple 2:-
+-------------
+select distinct city,name,salary from employee102 where age >='23';
+
+from clause :-
+---------------
+FROM is mandatory with the select statement .It specifies from which table 
+you want to retrieve the data .
+Example :-
+---------------
+select * from employee102 where salary >20000 order BY salary DESC;
+select * from employee102 where salary >20000 order BY salary asc;
+
+padding :-
+------------
+LPAD :LEFT PADS A STRING WITH ANOTHER STRING TO CERTAIN LENGTH.
+SYNTAX:
+LPAD(STRING,LENGTH,LDAP-STRING)
+
+EXAMPLE :-
+-----------
+SELECT LPAD(NAME,11,'XPERT')AS
+LPADNAME
+FROM CUSTOMER
+
+RPAD :
+EXAMPLE :-
+------------
+SELECT RPAD(NAME,11,'XPERT')AS
+RPADNAME
+FROM CUSTOMER
+
+TRIM :-
+---------
+LTRIM:
+EXAMPLE :
+--------------
+SELECT RTRIM ('        THIS IS LTIM    ')AS LTRIMSTR
+FROM CUSTOMER
+
+REVERSE :-
+--------------
+EXAMPLE:
+
+
+Joining two tables :-
+--------------------
+create table employee102 and create table emp_details.
+
+select employee102.empid,employee102.city,emp_details.designation
+from employee102
+inner join emp_details
+on employee102.empid=emp_details.empid;
+
+Oracle Group By clause :-
+---------------------------
+In Oracle Group By clause is used with select statement to collect data 
+from multiple records and group the result in one or two colunms .
+syntax :-
+--------------
+select exp1,exp2,exp3..,aggregate function 
+   from tables where condi.
+      Group By exp1,exp2,exp3   
+
+Aggregate function : sum , count,min,max,avg.
+
+First create a table with name sale_data
+CREATE TABLE SALE_DATA 
+(
+  ITEM_NAME VARCHAR2(20) 
+, ITEM_SALE NUMBER 
+, ITEM_ADDR VARCHAR2(20) 
+);
+Adding items in the table :-
+----------------------------------
+
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('samsung', '100', 'mumbai')
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('nokia', '20', 'mumbai')
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('Apple', '70', 'delhi')
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('motorola', '40', 'chennai')
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('samsung', '120', 'delhi')
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('nokia', '50', 'delhi')
+INSERT INTO "SYSTEM"."SALE_DATA" (ITEM_NAME, ITEM_SALE, ITEM_ADDR) VALUES ('Apple', '113', 'mumbai')
+
+Performing the groupby clause :-
+------------------------------------
+select item_name,SUM(item_sale) as "total sales"
+from sale_data GROUP BY item_name;
+
+select item_addr,COUNT(*) as "No of states"
+from sale_data where item_sale>100 GROUP BY item_addr;
+
+select item_name,MIN(item_sale) as "Min sales"
+from sale_data  GROUP BY item_name;
+
+Oracle having clause :-
+--------------------------
+Having clause is always used with groupby clause.
+To restrict the group of returned rows where condi. is True.
+syntax :-
+------------
+select exp1,exp2,...,
+   aggregate function (aggregate_exp)
+   from Table
+   where condi.
+   groupby exp1,exp2,...
+   having having_condi.
+   
+Example :-
+----------------
+SELECT address,COUNT(*) as "No of cities"
+from emp_sales_data 
+where sales >25
+GROUP BY address
+having COUNT(*)>=4;
+
+Oracle Union :-
+-----------------
+* Union is used to combine  the result set of two or more select statements .
+* It combine both select statement and remove duplicate rows between them.
+
+Syntax :
+------------
+select exp1,exp2,...
+from table1
+where condi.
+union
+select exp1,exp2,....
+from table2
+where condi.
+
+Example :-
+-----------
+select stuid
+from student123
+where stuid<105
+union
+select stuid
+from student1234
+
+UnionAll :-
+-------------
+* It is used to combine the result set of 2 or more select statement.
+* Here we are going to get duplicate values.
+Syntax :-
+----------
+select exp1,exp2,...
+from table1
+where condi.
+union all
+select exp1,exp2,....
+from table2
+where condi.
+
+Oracle Minus operator :-
+--------------------------
+It is used to return all the rows of the first select statement that are 
+not returned by the second select statement .
+
+syntax :-
+-----------
+select exp1,exp2...
+from Table 1
+where condi.
+minus
+select exp1,exp2....
+from table2
+where condi.
+
+Example :-
+-----------
+select stuid 
+from student123
+minus
+select stuid
+from student1234
+
+Oracle Join :-
+-----------------
+Join is a query that is used to join/combine rows from two or more 
+tables ,views.
+It actually retrieves the data from the tables and will create a new table.
+
+Types of joins :-
+--------------------
+* inner join 
+* outer join
+* Equi-join
+* self join
+* cross join
+* Anti join
+* Semi join 
+
+Oracle Inner join :-
+-------------------------
+* similar to intersection but here we are going to get a new table .
+
+syntax :-
+------------
+select column 
+from table1
+inner join table2
+on table1.column=table2.column
+
+Example :-
+-------------
+SELECT student123.stuid
+from student123
+inner join student1234
+on student123.stuid=student1234.stuid
+
+Oracle Outer join 
+----------------------
+left outer join :-
+---------------------
+Example :-
+--------------
+SELECT student123.stuid,student123.stuname
+from student123
+left outer join student1234
+on student123.stuid=student1234.stuid
+
+
+right outer join :-
+--------------------
+syntax :
+select column 
+from table1
+right[outer] join table2
+on table1.column=table2.column;
+
+Example :-
+-------------
+select student123.stuid,student123.stuadd
+from student123
+right outer join student1234
+on student1234.stuid=student123.stuid
+
+full outer join :-
+----------------------
+syntax :-
+---------
+select column 
+from table1
+full outer join table2
+on table1.column=table2.column;
+
+Example :-
+------------
+select student123.stuid,student123.stuadd
+from student123
+full outer join student1234
+on student1234.stuid=student123.stuid
+
+Equi-join :-
+---------------
+here we can use where clause for the comparision operations.
+
+syntax :-
+---------
+select column 
+from table1,table2
+where table1.column_name=table2.column_name
+
+Example :-
+-------------
+select student123.stuname,student123.stuadd,student1234.stuph,student123.stuid
+from student123,student1234
+where  student1234.stuid=student123.stuid
+
+Self-join :-
+--------------
+In self join , a table is joined with itself.
+here we are going to get the uninary relationship.
+
+syntax :-
+-----------
+select a.col_name,b.col_name 
+from table1 a,table1 b
+where a.col_feild=b.col_feild
+
+Example :-
+--------------
+using where clause :-
+-----------------------
+select a.stuid,b.stuname,a.stuadd
+from student123 a,student123 b
+where a.stuid<b.stuid
+
+using on clause :-
+---------------------
+select a.stuname " name of student ", b.stuadd "location"
+
+from student123 a join student123 b 
+on (a.stuid=b.stuid)
+
+cross join:-
+---------------
+if we want to join table1 with table2 all the rows of table1 will join with all the 
+rows of table2 .suppose for example i am having the x rows in table1 and y row in table 2
+so the cross join will perform x*y
+
+Syntax :-
+----------
+select * from table1 cross join table2 
+or 
+select * from table1,table2
+
+Anti - join :-
+-------------------
+Anti - join is faster amoung all joins 
+Anti - join between two tables returns the row from the first table 
+where no match are found in the second table. It is just the opposite of 
+semi- join .
+
+PL/SQL :-
+----------
+PL => Procedural lang 
+Procedural :Line by line my code is going to be executed. 
+Sql : Structured query language.
+
+PL/SQL - Syntax
+--------------------
+DECLARE 
+   <declarations section> 
+BEGIN 
+   <executable command(s)>
+EXCEPTION 
+   <exception handling> 
+END;
+
+Example :-
+---------       
+
+DECLARE 
+   msg  varchar2(20):= 'welcome to Oracle PL/SQL'; 
+BEGIN 
+   dbms_output.put_line(msg); 
+END; 
+/ 
+
+programs :-
+-------------
+create or replace procedure second
+AS
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('message');
+END;
+   /   
+
+
+
+example of procedures to insert the values :-
+---------------------------------------------------
+create or replace procedure insertdata(
+ id in number,
+ name in VARCHAR2)
+ is
+ begin 
+ insert into abc values(id,name);
+ end;
+ /
+
+begin
+  insertdata(1001,'sanket');
+  dbms_output.put_line('record inserted sucessfully');
+end;
+/
+drop procedure myex2;
+set SERVEROUTPUT ON;
+
+Question 1  :-
+--------------
+Create a stored procedure named "SelectAllDepartments" that selects 
+all records from the "Departments" table.
+ 
+Question 2 :-
+-------------------
+create a stored procedure name "DeleteInactiveEmp" that will delete 
+all the records for those employeees which are inactive.(Usingt sun-query concept).
+
+
+if statement :-
+---------------
+if condi
+  then 
+  {
+     statement 1
+  }
+else
+{
+  statement 2
+}
+END if;
+
+declare 
+   a number(2) := 12;
+ begin
+   if (a<15) then
+      DBMS_OUTPUT.PUT_LINE('a is less than 15');
+   else 
+      DBMS_OUTPUT.PUT_LINE('a is greater than 15 ');
+end if ;
+    DBMS_OUTPUT.PUT_LINE('value of a is: ' || a );
+	
+END
+     
+
+multiple condi :-
+-------------------
+declare 
+   a number(2) := 12;
+   b number(3) := 15;
+ begin
+   if (a<b) then
+      DBMS_OUTPUT.PUT_LINE('a is less than b');
+   else 
+      DBMS_OUTPUT.PUT_LINE('a is greater than b ');
+end if ;
+    DBMS_OUTPUT.PUT_LINE('value of a is: ' || a );
+	
+END
+
+syntax for multiple if else statement :-
+-----------
+if condition 1
+then 
+ {
+    statement 
+ }
+elseif condition 2 
+then 
+  {
+     statement 2 
+  }
+  
+end if;
+
+declare 
+   a number(2) := 12;
+   b number(2) := 15;
+   c number(2) := 17;
+ begin
+   if (a<b) then
+      DBMS_OUTPUT.PUT_LINE('a is less than b');
+   elsif(b<c) then
+      DBMS_OUTPUT.PUT_LINE('b is less than c ');
+   else
+	  DBMS_OUTPUT.PUT_LINE('c is less than a and b  ');
+	
+   end if ;
+	
+END;
+	
+END;
+/
+
+case statement :-
+----------------
+If we want to execute the sequence of statement based on some selection .
+
+Example :-
+------------
+declare 
+  grade char(1) := 'Z';
+  
+begin 
+   CASE grade 
+    when 'A' then DBMS_OUTPUT.PUT_LINE('first class');
+	when 'B' then DBMS_OUTPUT.PUT_LINE('second class');
+	when 'C' then DBMS_OUTPUT.PUT_LINE('third class');
+	when 'D' then DBMS_OUTPUT.PUT_LINE('fail');
+	else DBMS_OUTPUT.PUT_LINE('no result to display');
+END CASE;
+END;
+
+functions :-
+---------------------
+two types :-
+-----------
+1)User defined
+   * No-arg function
+   * Parameterized Function
+2)Inbuilt Function
+syntax :-
+-------------
+create function function_name
+return return_datatype
+is|as
+declare section
+begin 
+ executable code 
+exception
+  exception section
+End function_name
+
+Add Two nos using the function concept :-
+-----------------------------------------------
+Example to create a function :-
+--------------
+create  function adds(n1 in number, n2 in number)   /parameters or arguments 
+return number
+is
+n3 Number(8);
+begin
+n3 := n1+n2;
+return n3;
+end;
+
+Example for calling the function :-
+------------------------------
+declare 
+ n3 number;
+ begin
+  n3 := adds(12,13);
+dbms_output.put_line('addition of the no is : ' || n3);
+  end;
+  /
+  
+find greater of two nos. :-
+------------------------------
+create or replace function maxx(x in NUMBER, y in NUMBER)
+RETURN NUMBER
+is 
+z number;
+begin 
+if x > y then  
+ z:=x;
+else
+z:=y;
+end if;
+return z;
+end;
+begin
+
+declare
+ a number;
+ b number;
+ c number;
+ begin
+ a:=1000;
+ b:=1500;
+ c:=maxx(a,b);
+ dbms_output.put_line('maximum of the no is : ' || c);
+ end;
+flow control is divided into 3 parts :-
+---------------------------------------------
+1)Conditional Statements (if - else)
+2)Iterative Statements (loop,for,while)
+3)Transfer Statement (goto,continue,break)
+
+pl/sql loops  :-
+-----------------
+4 types 
+1)Basic loop
+2)while loop
+3)for loop
+4)cursor for loop
+
+syntax :-
+----------
+loop
+  sequense of statement 
+end loop;
+
+Basic loop :-
+-----------------
+declare 
+ i number :=1;
+ begin
+  loop
+  exit when i>20;
+  DBMS_OUTPUT.PUT_LINE(i); 1,2,.....19,20
+  i:=i+1;
+  END loop;
+  end;
+  
+ declare 
+ i number ;
+ j number ;
+ begin
+  i :=10;    
+  j :=2;
+  loop
+  DBMS_OUTPUT.PUT_LINE(i*j); 
+  if (i=20)then
+  exit;
+  end if ;
+  i := i+1;
+  END loop;
+  end;
+  
+ difference between while and for loop :-
+ ----------------------------------------------
+ for loop is applied when we know the no. of iteration in advance.
+ where as while is executed when we dont kw the no of iterations in adv.
+while loop :-
+---------------
+syntax :-
+----------
+while <condition>
+  loop statement 
+End loop;
+
+Example :-
+-------------
+declare
+i INTEGER :=1;
+begin
+while i<=100 loop
+DBMS_OUTPUT.PUT_LINE(i);
+i:=i+1;
+end loop;
+end;
+
+for loop :-
+------------
+syntax :-
+--------------
+for count IN initial_value ..final_value loop
+  loop statement 
+end loop ;
+
+Example :-
+-------------
+declare 
+i INTEGER;
+begin 
+for i in 10..50 loop 
+DBMS_OUTPUT.PUT_LINE(i);
+end loop;
+end;
+
+continue statement :-
+-------------------------
+Example :-
+-----------
+declare
+x NUMBER := 0;
+begin
+loop
+DBMS_OUTPUT.PUT_LINE('inside loop = '||TO_CHAR(x));
+x :=x+1;
+if x<5 then
+ CONTINUE;
+end if;
+DBMS_OUTPUT.PUT_LINE('after continue statement: '||TO_CHAR(x));
+exit when x=10;
+END loop;
+DBMS_OUTPUT.PUT_LINE('after loop:' ||TO_CHAR(x));
+end;
+
+GOTO Statement :-
+-------------------
+systax :-
+-------------
+GOTO label_name;
+
+Example :-
+------------
+declare 
+a number(2):= 30;
+begin
+<<loopstart>>
+while a<50 loop
+DBMS_OUTPUT.PUT_LINE('value of a is :' ||a);
+a :=a+1;
+if a=40 then 
+a:=a+1;
+goto loopstart;
+end if ;
+end loop;
+end;
+
+Procedures :-
+----------
+procedure is a block which performs some specific task .
+The procedure contains :-
+--------------------------
+1)Header
+2)Body
+
+1)Header : inside the header we can pass parameters and variables.
+2)Body: Declaration section or Executeable code .
+
+To pass the parameters in Procedure we use three parameters :
+--------------------------------------------------------------
+1)IN Parameter : The value of the parameter cannot be overriden by the procedures .
+2)OUT Parameter:The value of the parameter can be overriden by the procedures .
+3)INOUT Parameter :The value of the parameter can be overriden by the procedures .
+
+syntax :-
+-------------
+create [or replace]procedure p_name
+[parameters]
+is
+ [declaration]
+body 
+  execute the code 
+[exception]
+end[p_name]
+
+Example of procedure :-
+--------------------------
+Creating the procedure :-
+-------------------------------
+create or REPLACE procedure "insert_d"
+(p_id in NUMBER,
+p_name in varchar2)
+is
+begin
+insert into p_table values(p_id,p_name);
+end;
+/
+calling the procedure :-
+---------------------------
+begin
+"insert_d"(105,'raaj');
+dbms_output.put_line('data inserted sucessfully');
+end;
+/
+
+
+Function in Oracle :-
+------------------------
+create or replace function "add"(n1 in NUMBER,n2 in number)//function definition
+RETURN NUMBER
+is
+n3 NUMBER(8);
+begin
+n3 :=n1+n2;       //function implementation 
+return n3;
+end;
+/
+declare 
+n3 number;
+begin
+n3 := "add"(100,200);    // calling the function 
+dbms_output.put_line('the addition of two no is :'||n3);
+end;
+/
+
+Packages in Oracle :-
+--------------------------
+Package is a group of logically related subprogram.
+
+Package is divided in two part :-
+1)Specification
+2)Body
+
+public package is declared in Specification.
+private package is defined in the body part .
+
+
+
+Exception :-
+------------
+An error occuring during the program execution is called as Exception.
+
+There are two types :-
+------------------------
+1)System defined
+2)User defined 
+
+
+Syntax :-
+------------
+DECLARE
+   declaration_section
+Begin 
+   code for the execution
+Exception
+   handling code
+   when exception1 then 
+       exception1 handling code 
+	when exception2 then 
+       exception2 handling code
+	   
+END;
+
+Example :-
+------------\
+DECLARE 
+   s_id student.stu_id%type := 5;
+   s_name student.stu_name%type;
+   
+begin
+   select stu_name into s_name from student
+   where stu_id=s_id;
+
+dbms_output.put_line('name is :'||s_name);
+EXCEPTION
+ WHEN no_data_found THEN
+    dbms_output.put_line('..No such Record ...');
+WHEN others THEN
+    dbms_output.put_line('..Other Error');
+END;
+/
+
+User Defined Exception :-
+-----------------------------
+DEclare 
+my-exception Exception
+
+Syntax :-
+-------------
+declare 
+   exception_name Exception;
+begin 
+if condition then 
+   raise exception_name;
+end if ;
+exception 
+    when exception_name then 
+	statment;
+End ;
+/
+
+Example :-
+------------
+declare 
+   a number(2) := 12;
+   b number(2) := 15;
+   my_exc Exception;
+begin 
+if (a<b) then 
+   raise my_exc;
+end if ;
+exception 
+    when my_exc then 
+	dbms_output.put_line('dont divide by zero');
+End ;
+/
+
+Pattern programming in Oracle PL/SQL :-
+-------------------------------------------------
+Program 1:-
+---------------
+DECLARE
+  N NUMBER := 5;
+  I NUMBER;
+  J NUMBER;
+BEGIN
+  FOR I IN 1..N
+  LOOP
+    FOR J IN 1..I
+    LOOP
+      DBMS_OUTPUT.PUT('*') ; 
+    END LOOP;
+    DBMS_OUTPUT.NEW_LINE; 
+  END LOOP;
+END;
+/
+Output :-
+-------------
+*
+**
+***
+****
+*****
+******
+*******
+
+Program 2 :-
+--------------
+declare
+	n number:=5;
+	i number;
+	j number;
+begin
+	for i in reverse 1..n
+	loop
+		for j in 1..i
+		loop
+			dbms_output.put('*');
+		end loop;
+		
+		dbms_output.new_line;
+	end loop;
+end;
+/
+Output :-
+-----------
+*****
+****
+***
+**
+*
+
+program 3 :-
+---------------
+DECLARE
+   number1 NUMBER(3) := 1;
+   sumvar NUMBER(4) := 0;
+
+BEGIN
+   dbms_output.put_line('The odd numbers are : ');
+      WHILE number1 <= 15 LOOP
+         dbms_output.put_line(number1);
+         sumvar := sumvar+number1;
+         number1 := number1 + 2;
+      END LOOP;
+dbms_output.put_line('Sum of odd numbers is '|| number1);
+END;
+/
+Output :-
+--------------
+The odd numbers are : 
+1
+3
+5
+7
+9
+11
+13
+15
+Sum of odd numbers is 17
+
+program 4 :-
+---------------
+Reverse of the number :-
+----------------------------
+declare
+ num varchar2(5):='12345';              
+ len number(2);             
+ revnum varchar2(5);         
+   
+  
+begin
+ len := length(num);          -- 1....5       
+ for i in reverse 1.. len 
+ loop              
+ revnum := revnum || substr(num,i,1); 
+ end loop; 
+dbms_output.put_line('Given number ='|| num);  
+dbms_output.put_line('Reversed number ='|| revnum);  
+ end;
+ /
+Output :-
+---------------
+Given number =12345
+Reversed number =54321
+
+program 5 :-
+----------------
+declare
+ num number := 10;              
+ fact number := 1;             
+ temp number;            
+begin 
+temp :=num; 
+while( temp>0 )              
+loop 
+fact := fact*temp;     10*9*8.....
+temp := temp-1; 
+end loop; 
+dbms_output.put_line('factorial of '|| num || ' is ' || fact); 
+ end;  
+ /
+Output :-
+-------------
+factorial of 10 is 3628800
+
+Trigger :-
+-------------
+1)before insert trigger 
+2)before update trigger
+3)before delete trigger 
+4)after insert trigger 
+5)after update trigger
+6)after delete trigger 
+
+1)before insert trigger :
+----------------------------
+syntax :-
+------------
+create trigger t_name 
+before insert or update or delete
+on t_name
+ for each row
+declare
+------
+begin
+  trigger code 
+exception 
+   when ....
+end;
+/
+
+Cursors in Oracle :-
+----------------------
+whenever we are executing some sql statement,then Oracle is going to create 
+some area and this area is known as context area .
+A cursor is a pointer to the context area.
+a cursor contains some information on the DML statement .
+
+There are two types of cursors :
+--------------------------------------
+1)implicit cursor 
+2)explicit cursor
+
+Implicit cursor :-
+-------------------------
+It is automatically executed when any sql statement is executed.
+%FOUND , %NOTFOUND , %ISOPEN , %ROWCOUNT
+
+%FOUND : RETURNS TRUE ,WHEN THE DML STATEMENT UPDATE SOMETHING(ROWS ARE EFFECTED)
+
+Example :-
+----------------
+DECLARE
+TOTAL_ROW NUMBER(10);
+BEGIN
+UPDATE customer
+SET salary=SALARY+500;
+IF SQL%NOTFOUND THEN
+dbms_output.put_line('NO RECORD  UPDATED');
+ELSIF SQL%FOUND THEN
+TOTAL_ROW := SQL%ROWCOUNT;
+dbms_output.put_line(TOTAL_ROW ||' records added');
+END IF;
+END;
+/
+
+Explicit cursor :-
+-------------------
+when we want more control on the context area then we should go for the
+explicit cursor.
+
+syntax :-
+--------------
+cursor cursor_name is select_statement
+
+steps for defining the explicit cursor :
+---------------------------------------------
+1)declare the cursor  : cursor cursor_name is select_statement
+2)open the cursor to allocate the memory : open cursor_name
+3)fetch the cursor to retrieve the data  : fetch cursor_name into variable_name
+4)close the cursor to deallocate the area: close cursor_name
+
+Example :-
+--------------
+DECLARE
+c_id customer.column1%type;
+c_name customer.name%type;
+c_address customer.address%type;
+CURSOR c_customer is select address from customer ;
+BEGIN
+open c_employee;
+loop
+ FETCH c_customer into c_address;
+ exit when c_customer%notfound;
+ dbms_output.put_line(c_address);
+ end LOOP;
+close c_customer;
+END;
+/
+
+SQL WHERE CLAUSE
+--------------------
+WHERE CLAUSE IS USED TO FILTER OUT THE RECORDS.
+
+WHERE SYNTAX :-
+------------------
+SLELECT COL1,COL2
+FROM TABLE_NAME
+WHERE CONDI.
+
+EXAMPLE :-
+----------
+SLECT * FROM STUDENT123 WHERE stuadd='mumbai';
+
+Sql AND ,OR and NOT operators:
+-----------------------------------
+examples :-
+----------------
+SELECT * FROM STUDENT123 WHERE STUADD='mumbai' or stuname='abc'
+SELECT * FROM STUDENT123 WHERE not STUid=101
+
+triggers in Oracle or sql :-
+---------------------------------
+Triggers are stored program or procedures which are automatically executed or fired 
+when some event occurs.
+
+Event can be anything like :-
+----------------------------------
+1)DML(Data manupulation Lang): like delete , insert, update
+2)DDL(Data Definitionn Language): like create , alter or drop .
+3)DBA operations : like login , logoff,startup,shutdown.
+
+Triggers can be defined on the table , views,schema or database 
+with which the event is associated.
+
+Advantages of Triggers :-
+------------------------------
+1)Gain strong controlon security
+2)Enforcing referential integrity.
+3)Event logging and storing information on the table access
+4)Auditing
+5)Sychonous replication of table .
+6)prevention of invalid transaction.
+
+syntax :-
+----------------------
+create or replace trigger trigger_name 
+{before|after}
+{insert|update|delete}
+on table_name
+[for each row]
+
+Declare 
+declaration statement 
+begin
+executable code 
+end;
+/
+
+Example :-
+--------------
+set  SERVEROUTput on 
+
+create table trigger_table(eid number,ename varchar2(20),salary number)
+and insert some rows over there .
+
+create trigger salary_diff
+before insert or delete or update on trigger_table
+for each row
+declare salary_difference number;
+begin
+salary_difference := :new.salary - :old.salary;
+DBMS_OUTPUT.PUT_LINE('old salary is : ' || :old.salary);
+DBMS_OUTPUT.PUT_LINE('new salary is : ' || :new.salary);
+DBMS_OUTPUT.PUT_LINE('salary difference is : ' || salary_difference);
+end;
+/
+
+
+Indexes :-
+-------------
+Indexes are used to speed up the retrival process.
+its operation is done by the oracle server.
+
+
+
+insert into trigger_table values(10,'kuldeep',26000);
+delete from trigger_table where eid=10;
+update trigger_table set salary =46000 where eid=1
+
+packages in Oracle :-
+--------------------------
+A package is a collection of procedures, function , variables,
+cursors,types etc..
+So,we can say that related function and procedured which are grouped 
+into a single unit and this unit is called as package.
+example :-
+------------
+banking application :-
+--------------------------
+loan dept  ==> home , personal loan 
+insurance dept  ===> health insurance, motor insurance,life insurance.
+
+In package concept we can have 
+public as well as private variables,procedures,functions.
+
+public packages can be exceessed from anywhere
+but private packages can be exceessed within the same package.
+
+what is the need of the packages ?
+--------------------------------------
+1)package improves the performance.
+      suppose for first time we are hiting  a package it going to 
+	  load all the data into the memory.and for the next time it
+	  will fetch the data from the memory not the database part.
+	  so it faster because the request will not go to the database part.
+	  
+2)It support overloading .
+3)It supports overriding as well .
+
+Packages consist of two part :-
+-------------------------------------
+1)package specification
+2)package body 
+
+1)package specification
+------------------------------
+Consist of declaration of the procedures,function,variables,exceptions.
+
+2)package body :-
+----------------------
+It consist of function,procedures defination.
+
+creating the package specification :-
+--------------------------------------------
+create or replace package hr
+as
+procedure hire(e in number,n in varchar2(10),j in varchar2(10),s in number,d in number);
+procedure fire(e in number);
+end;
+/
+
+creating the body part :-
+--------------------------------
+create or REPLACE package body hr
+as 
+procedure hire(e in number,n in varchar2(5),j in varchar2(10),s in number,d in number)
+is begin
+insert into emp_pkg(empno,ename,job,sal,deptno) values (e,n,j,s,d);
+commit;
+end hire;
+procedure fire(e in number)
+is
+begin
+delete from emp_pkg where empno=e;
+commit;
+end fire;
+end;
+/
+execute the package :-
+---------------------------
+execute hr.hire(101,'navneet','it',25000,25);
+execute hr.fire(101);
+
+Views In Oracle :-
+--------------------------
+Views are the virtual table that does not exist pysically.
+It is stored in Oracle data dictionary.
+Views does not contain any values.
+ 
+syntax for creating the views :-
+-------------------------------------
+create view view_nameselect column from t_name where condi.
+
+Sub - Queries :-
+-----------------
+we should go for the sub query when we want to go for the 
+unknown input value ie when we want to built the query dynamically.
+Example : find out the list of employee getting more salary than employee abc
+in this case we want to write the query dynamically based on unknown value.
+i.e we dont known what is the salary of abc.
+first we should find the salary for the employee abc then using this value 
+we should find the list of employees getting more salary than abc .
+that is our query is based on unknown value so dynamically it should fetch 
+the salary of both.
+
+Defination :-
+------------------
+* Sub- query is also known as Nested Query or Inner Query.
+* A sub- query is a query that is used in a clause on another.
+* a sub query is used to dynamically built a search condition for the main query.
+* A single sub query may be built up using multiple sub queries.
+* A where clause of one query may contain another query called as sub queries.
+* Sub- query can be used within the having clause.
+* Oracle always process sub query before main query.
+* Sub queries may contain join queries and search condi. of there own.
+* a sub query can retrive information from more than one table.
+* A sub-query can return single or multiple values.
+
+Based on the output sub-queries are divided into many types.
+--------------------------------------------------------------------
+1)Single  values query : 
+  * this query returns a single values one value as a return type.
+  * we can use single row relational operation.
+  * we can use multiple row relational operation.
+  
+2)Multiple value sub-query :-
+  * this query returns any number of values one value as a return type.
+  * we can't use single row relational operation.
+  * we have to use multiple row relational operation only.
+  
+3)Multi-Table Subquery :-
+   * A sub-query that refers multiple table i.e values we can get 
+     throught multiple tables.
+   
+4)Multi-column subqery (Introduced after 9i):-
+   * A sub-Query that returns values of multiple columns.
+   * we can use single row relational operation.
+   * we can use multiple row relational operation if query produces 
+     multiple columns output.
+	 
+5)Inline Views :-
+   * A query used in select clause or from clause or groupby clause or 
+     orderby clause or any other clause of sql except where and having clause.
+	 
+6)Correlated SubQuery :-
+   * It is a Sub-query which is executed repeatdly,once for each row of
+     the main query.
+   * It is a nested query which is executed once for each 'candidate row'
+     selected by the main query.
+	 
+   * Examples : Display all employees who earn salaries greater than 
+                the average salary within there own departments.
+				
+7)Multiple-column subquery :-
+   * For Example :Display name and salalry of the employess whose salary 
+                  is greater than average salary and who works in the same 
+                  department as emplyee abc				  
+Sub-Query are placed in where clause or having clause only.
+Sub-Query will execute before the main query.
+Sub- Query will execute only once for the entire Main Query.
+
+Steps :-
+   1)Execution of Sub-Query
+   2)Sub-Query gives result 
+   3)Using the result of sub-Query by Main Query.
+   4)Execution of the main Query using the result of sub-Query.
+   5)Producing final output by the main Query.
+   
+Single value Sub-Query : A Sub-Query that returns Exactly one value of one column only.
+Multi-Value sub-Query  : A sub-Query that returns more than one value of output of one column only.
+Multi-Row sub-Query    : A sub-Query that return more than one row of output.
+Multi-column sub-Query : A sub-Query that return more than one column of output.
+
+NOTE : Sub-Query can be used in any DML statements(select,update,delete and merge).
+	
+Programs : -
+---------------------
+Scalar sub-Query or Single row sub-Query :return exactly one row of one column only.
+-----------------------------------------------
+Sql:>select * from employees where salary > (select salary from employees where  first_name='Lex');
+	 scalar query only one output getting.
+
+Now displaying the salary of the employees who is getting more salary that lex.
+
+Multi-Row sub-Query :-
+---------------------------
+select * from employees where salary > All(select salary from employees where  first_name='William');
+
+Note : all is known as multi-row operator.
+       (select salary from employees where  first_name='William')==>this is sub-query
+       select * from employees where salary  ==> this is main query.
+	   
+inline views :-
+----------------------
+Query used in select clause or from clause or group by clause or order by clause.
+
+Select * from (select * from employees where salary>5000)
+Select * from (select * from employees where department_id=50)where salary >5000
+Select employee_id,first_name,salary,(select nvl2(commission_pct,sal)from employees 
+where employee_id=a.employee_id)tol_sal from employees a; // not working 
+
+
+select * from employees where salary in(select salary from employees where job_id='IT_PROG')order by 1
+
+Insert example in inline view :-
+-----------------------------------
+insert into departments(department_id,department_name,manager_id,location_id)
+values ((select max(department_id)+10 from departments),'IT',100,1700);	   
+	   
+Multi-column sub-Query :-
+-------------------------------
+select * from employees where (salary,commission_pct)=(select salary,commission_pct from employees where first_name='Dravid');
+
+select * from employees where (salary,commission_pct)=(select salary,commission_pct from employees where first_name='Neena')
+and commission_pct=(select commission_pct from employees where last_name='Kochhar'; 
+
+correlated sub query :-
+----------------------
+Here sub-Query will be executed multiple times but main query will be executes first.
+
+example :-
+-------------
+select * from employees a 
+where salary in (select salary from employees b where a.salary=b.salary)
+
+select * from employees a 
+where salary in (select salary from employees b where a.salary=b.salary and a.commission_pct is not null);
+
+NOTE :
+-----------
+Table is the main object in sql.
+but the other objects are :-
+
+* views
+* sequence
+* synonym
+* index
+* type
+* Object Table
+* Nested Table
+
+Object Table Nested Table are actualy these two are the collections in sql 
+
+VIEWS :-
+-----------
+Views are the imaginary table 
+view dont contain any data within the view itself but the view will always 
+bring the data from the base table.
+views will always be created based on the base table.
+user_views is the data dictonary which will give all the imformations about the views.
+desc user_views
+
+Types of Views :-
+----------------------
+1)Simple VIEWS
+2)Complex Views 
+3)Force VIEWS
+4)Read only view 
+5)with check option view 
+
+How to create the views :-
+-------------------------------
+create view first_view as select * from employees;
+
+sometime u can get the error msg that not enought privileges.
+SQl>sys as sysdba
+grant create view to hr;
+
+desc first_view;
+
+select * from first_view;
+
+create or replace view first_view as select * from departments;
+create view second_view as select department_name,location_id from departments;
+select * from second_view
+
+
+Applying the clauses inside the views :-
+----------------------------------------------
+select department_id,sum(salary) from first_view where salary>6000 
+group by department_id having sum(salary)>20000
+
+desc user_views
+
+View based on another views :-
+----------------------------------
+create view third_view as select * from first_view
+
+select * from third_view
+desc third_view
+
+Get All the views from the database :-
+-------------------------------------------
+select * from tab where tabtype ='VIEW';
+select view_name,view_type,superview_name,text_length,text from user_views;
+
+1)Simple Views and complex view  :-
+---------------------------------------
+A view created based on a single table without using the following :-
+---------------------------------------------------------------------------
+* Group By Clause
+* Order By Clause
+* Group Functions 
+* Joins 
+* Sub-Query
+
+If any of the above options are used then it becomes The complex view.
+If a view is created based on multiple tables or if it is a single table and 
+have been created using the above conditions then it becomes a complex view.
+
+If it is a simple view all the DML operations are possible(select,insert,update delete,merge).
+but if it is a complex view select is posssible DML write operations may or may not 
+be applicable based on the scenario.
+
+Force view :-
+-------------
+If we are tring to create a view based on the table but based tabe is not present
+in the db but we are assuming that emp5 is present in the database based on that 
+we want to create a view but emp5 is not present in the database so can we create a 
+view or not.
+So, till 8i we cant create a view but after the 8i we can create a view if 
+table dont exist that is through the force view but view will be create with error.
+
+Read Only view :-
+----------------------
+Only select operation is possible on this view.
+Read operation is posssible.
+Write operation are not possible on this view.
+With Check Options : while creating the view we use specific condition in the 
+where clause along with the check option,If we perform the write operation on this view 
+the condition the it may or it may not write the data.
+
+examples :-
+----------------
+force view :-
+-------------
+create force view fv as select * from navn
+
+desc fvobject 
+select object_name,object_type,status from user_objects where object_name='FV'
+Read Only View :-
+
+create view ro_view as select * from employees with read only;
+select * from ro_view   --will give all the records of the table 
+update ro_view set salary=10000 where salary=4800  -- not possible
+delete from ro_view where department_id=90
+
+Create a view with read only with check options :-
+-----------------------------------------------------
+create view view_check as select * from employees where department_id=90  with read only;
+select * from view_check
+update view_check set salary=20000 where salary=17000
+
+creating view with check options:-
+------------------------------------
+create view view_check2 as select * from employees where department_id=50  with check option
+select * from view_check2
+update view_check2 set salary=20000 where employee_id=121
+
+using multiple condi.
+--------------------------
+create view view_check3 as select * from employees where department_id=50 and salary<10000 with check option;
+
+complex view example :-
+-------------------------------
+create view complex_view as select department_id,sum(salary) as total_salary from employees group By department_id;
+select * from complex_view
+delete from complex_view where department_id=50 --data manipulation operation not legal on this view
+
+create view complex_view as select department_id,sum(salary) as total_salary from employees group By department_id;
+select * from complex_view
+delete from complex_view where department_id=50 --data manipulation operation not legal on this view
+
+rename complex_view to cv
+drop view cv
+select * from  ro_view
+truncate view  ro_view
+comment on view ro_view is 'view is read only view'--COMMENT command by specifying an accepted object
+          -- category. (ie, Table, Operator, Indextype, etc.)
+comment on table ro_view is 'view is read only view'
+select * from  user_tab_comments where table_name='RO_VIEW'
+select * from  user_tab_comments
+
+SEQUENCE:-
+--------------
+* Sequence is used to automatically generate unique values and sequencial values.
+* When we want to generate the sequencial value we use sequence and the 
+  values which are generated by the sequence are always unique or distinct.
+* Generally for primary key column value we use sequences like id columns,we define
+  id key as primary column and o store the value to that column we will use the 
+  sequence to fill the value ahd it will be generatd automatically.
+
+Synonym : -
+---------------
+* It is a data base object.
+* It is giving an alias to the table i.e the duplicate name to the table.
+
+It is of two types :-
+--------------------
+1)Public 
+2)Private
+
+* By default all the synonym are private all the synonym are accessed within the 
+schema of the owner only(within the schema itself). 
+* Public synonym are available throught out the database i.e from all the schemna we can
+access the public synonym.Ex: Dual is a public synonym.
+  
+Like view synonym does not store any data inside the object it will always bring the data from the base table .
+
+Different between View and synonym :-
+---------------------------------------
+synonym can be created for the entire table only and for one table only.
+synonym cannot be created for the half table , for select column .select row
+synonym cannot be created for two tables but view ccan be created.
+
+views can be created either on one table or on two table
+we can create the public synonym but view cannot have the view 
+because view is private.
+
+
+ 
+
+COLLECTION IN ORACLE :-
+------------------------------
+Collection is a group of elements , just like an arrays in programming lang.
+int a[];
+x number(5);
+   
+Types of collections :-
+-----------------------------
+there are three types of collections.
+1)pl/sql table or index by table 
+2)varray
+3)Nested Table
+
+1)pl/sql table or index by table :-
+------------------------------------------
+steps 1: Declare the type(pl/sql).
+step2 2: Declare the variable.
+
+syntax for step 1(Type declaration): type name is table of datatype(elements datatype
+------------------------------------ index by datatype(index datatype);
+
+
+I want to store the number type :-
+--------------------------------------
+type array is table of number(4) index by binary_integer;
+  x array;
+  x(1) ==> 10
+  x(2) ==> 20
+  x(3) ==> 30
+  x(4) ==> 40
+  
+suppose for example we want to fetch the records of depart_name from employees table
+
+type dname_array is table of varchar2(30)
+index by binary_integer;
+
+d dname_array;
+
+declare 
+ type d_array is table of varchar2(20)
+    index by binary_integer;
+	
+ d d_array;
+ begin
+  for i in 1..5
+  loop
+    select department_name into d(i) from departments where department_id=i*10;
+	end loop;
+	for i in 1..5
+	loop
+	dbms_output.put_line(d(i));
+	end loop;
+	end;
+	/
+	
+There are some problems like we dont get the whole data then 
+we are going to get the error.
+This can be overcome by using the bulk collect.
+
+Bulk Collect : By using the bulk collect we can fetch all the data 
+               from the database and store it in the collections.so in a 
+			   single request we can fetch all the data from database.
+			   The main adv. of using the bulk collect the trip to tha database
+			   reduces and performance will be implroved.
+			   
+How to use the Bulk Collect ?
+---------------------------------
+declare 
+ type d_array is table of varchar2(20)
+    index by binary_integer;
+ d d_array;	
+ begin
+ select department_name bulk collect into d  from departments;
+ for i in 1..5
+	loop
+	dbms_output.put_line(d(i));
+	end loop;
+	end;
+	/
+	
+ 
+Oracle views Questions :-
+-----------------------------
+Q1)from the view get the names of the employeewho last_name begins with K
+   and who belongs to the dept_id = 90
+
+Q2)write the query on the view to get the first_name of all the employees 
+   who belongs to dept_id 100.
+ 
+ 
+
+						   
+				
+
+
+
+   
+  
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
